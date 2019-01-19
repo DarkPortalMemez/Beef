@@ -1,0 +1,10 @@
+D:\visual\Beef.exe\Beef.exe\bin\Debug\Beef.exe.exe.config
+D:\visual\Beef.exe\Beef.exe\bin\Debug\Beef.exe.exe
+D:\visual\Beef.exe\Beef.exe\bin\Debug\Beef.exe.pdb
+D:\visual\Beef.exe\Beef.exe\obj\Debug\Beef.exe.Form1.resources
+D:\visual\Beef.exe\Beef.exe\obj\Debug\Beef.exe.Properties.Resources.resources
+D:\visual\Beef.exe\Beef.exe\obj\Debug\Beef.exe.csproj.GenerateResource.cache
+D:\visual\Beef.exe\Beef.exe\obj\Debug\Beef.exe.csproj.CoreCompileInputs.cache
+D:\visual\Beef.exe\Beef.exe\obj\Debug\Beef.exe.exe
+D:\visual\Beef.exe\Beef.exe\obj\Debug\Beef.exe.pdb
+D:\visual\Beef.exe\Beef.exe\obj\Debug\Beef.exe.csprojAssemblyReference.cache
