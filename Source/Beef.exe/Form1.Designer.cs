@@ -232,7 +232,7 @@ namespace Beef.exe
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(663, 23);
+            this.button8.Location = new System.Drawing.Point(663, 8);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(134, 35);
@@ -265,7 +265,7 @@ namespace Beef.exe
             // slaveCounter
             // 
             this.slaveCounter.AutoSize = true;
-            this.slaveCounter.Location = new System.Drawing.Point(557, 23);
+            this.slaveCounter.Location = new System.Drawing.Point(672, 43);
             this.slaveCounter.Name = "slaveCounter";
             this.slaveCounter.Size = new System.Drawing.Size(90, 20);
             this.slaveCounter.TabIndex = 23;
