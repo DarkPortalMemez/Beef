@@ -87,7 +87,7 @@ namespace Beef.exe
             {
                 if (sa == true)
                 {
-                    bdol = bdol + beef;
+                    bdol = bdol + beef/5;
                     beef = 0;
                     BEEFAMMOUNT.Text = $"BEEF: {beef}";
                     BEEFDOLAMM.Text = $"B$: {bdol}";
