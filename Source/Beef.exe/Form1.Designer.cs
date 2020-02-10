@@ -265,7 +265,7 @@ namespace Beef.exe
             // slaveCounter
             // 
             this.slaveCounter.AutoSize = true;
-            this.slaveCounter.Location = new System.Drawing.Point(505, 30);
+            this.slaveCounter.Location = new System.Drawing.Point(557, 23);
             this.slaveCounter.Name = "slaveCounter";
             this.slaveCounter.Size = new System.Drawing.Size(90, 20);
             this.slaveCounter.TabIndex = 23;
