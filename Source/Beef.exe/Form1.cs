@@ -57,7 +57,8 @@ namespace Beef.exe
 
         private void button1_Click(object sender, EventArgs e)
         {
-            beef = beef + clickpower;
+            if (beef + clickpower > beef)
+                beef = beef + clickpower;
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
         }
 
@@ -209,7 +210,8 @@ namespace Beef.exe
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            beef = beef + workers * 10;
+            if (beef + workers * 10 > beef)
+                beef = beef + workers * 10;
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
         }
 
