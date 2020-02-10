@@ -18,12 +18,9 @@ namespace Beef.exe
     public partial class Form1 : Form
     {
         public long beef = 0;
-        public int beeftimer = 1;
         public long workers = 0;
         long clickpower = 1;
         long bdol = 0;
-        bool sa = false;
-        int sq = 0;
         public string fn;
 
         System.Media.SoundPlayer Music = new System.Media.SoundPlayer();
@@ -48,13 +45,6 @@ namespace Beef.exe
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Click on the link below to continue learning how to build a desktop app using WinForms!
-            System.Diagnostics.Process.Start("http://aka.ms/dotnet-get-started-desktop");
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (beef + clickpower > beef)
@@ -62,15 +52,10 @@ namespace Beef.exe
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            BEEFAMMOUNT.Text = $"BEEF: {beef}";
-        }
-
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if (beef >= 100)
+            if (beef >= 100 && clickpower + 1 > clickpower)
             {
                 clickpower++;
                 beef = beef - 100;
@@ -86,26 +71,23 @@ namespace Beef.exe
         {
             if (beef >= 1)
             {
-                if (sa == true)
+                if (checkBox1.Checked == true && bdol + beef > bdol)
                 {
                     bdol = bdol + beef/5;
                     beef = 0;
                     BEEFAMMOUNT.Text = $"BEEF: {beef}";
                     BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
-                else
+                else if (numericUpDown1.Value > beef)
                 {
-                    if (sq > beef)
-                    {
-                        MessageBox.Show("You do not have enough beef!");
-                    }
-                    else
-                    {
-                        bdol = bdol + sq / 5;
-                        beef = beef - sq;
-                        BEEFAMMOUNT.Text = $"BEEF: {beef}";
-                        BEEFDOLAMM.Text = $"B$: {bdol}";
-                    }
+                    MessageBox.Show("You do not have enough beef!");
+                }
+                else if (bdol + Convert.ToInt64(numericUpDown1.Value) > bdol)
+                {
+                    bdol = bdol + Convert.ToInt64(numericUpDown1.Value);
+                    beef = beef - Convert.ToInt64(numericUpDown1.Value * 5);
+                    BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                    BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
             }
             else
@@ -114,41 +96,9 @@ namespace Beef.exe
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (sa == false)
-            {
-                sa = true;
-            }
-            else
-            {
-                sa = false;
-            }
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            sq = Convert.ToInt32(numericUpDown1.Value) * 5;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("In short, by selling beef and earning b$s, which can be used in order to get discord ranks, (with a screenshot)");
-        }
-
-        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/DarkPortalMemez/Beef/wiki/Discord-ranks-and-requirments");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click_1(object sender, EventArgs e)
         {
-            if (beef >= 5000)
+            if (beef >= 5000 && clickpower + 150 > clickpower)
             {
                 clickpower = clickpower + 150;
                 beef = beef - 5000;
@@ -163,7 +113,7 @@ namespace Beef.exe
 
         private void DC_Click(object sender, EventArgs e)
         {
-            if (beef >= 1000)
+            if (beef >= 1000 && clickpower + 15 > clickpower)
             {
                 clickpower = clickpower + 15;
                 beef = beef - 1000;
@@ -217,7 +167,7 @@ namespace Beef.exe
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (bdol >= 2000 * numericUpDown2.Value)
+            if (bdol >= 2000 * numericUpDown2.Value && workers + numericUpDown2.Value > workers)
             {
                 workers = Convert.ToInt64(workers + numericUpDown2.Value);
                 bdol = bdol - (2000 * Convert.ToInt64(numericUpDown2.Value));
