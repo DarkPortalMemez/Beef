@@ -18,15 +18,18 @@ namespace Beef.exe
     public partial class Form1 : Form
     {
         public long beef = 0;
-        public long workers = 0;
+        public long slaves = 0;
         long clickpower = 1;
         long bdol = 0;
         public string fn;
+        bool slavebutton = false;
+        long slavepower = 1;
+        double beefprice = 0.2;
 
         System.Media.SoundPlayer Music = new System.Media.SoundPlayer();
         public Form1() {
             InitializeComponent();
-            string[] defsav = { "0", "1", "0" };
+            string[] defsav = { "0", "1", "0", "0", "false", "1", "0.2" };
             string[] defsa2v = { "YOUR BEEF" };
             Music.SoundLocation = "Main.wav";
             Music.PlayLooping();
@@ -73,19 +76,19 @@ namespace Beef.exe
             {
                 if (checkBox1.Checked == true && bdol + beef > bdol)
                 {
-                    bdol = bdol + beef/5;
+                    bdol = Convert.ToInt64(Convert.ToDouble(bdol) + Convert.ToDouble(beef) * beefprice);
                     beef = 0;
                     BEEFAMMOUNT.Text = $"BEEF: {beef}";
                     BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
-                else if (numericUpDown1.Value > beef)
+                else if (numericUpDown1.Value > Convert.ToInt64(Convert.ToDouble(beef) * beefprice))
                 {
                     MessageBox.Show("You do not have enough beef!");
                 }
                 else if (bdol + Convert.ToInt64(numericUpDown1.Value) > bdol)
                 {
-                    bdol = bdol + Convert.ToInt64(numericUpDown1.Value);
-                    beef = beef - Convert.ToInt64(numericUpDown1.Value * 5);
+                    bdol = Convert.ToInt64(Convert.ToDouble(bdol) + Convert.ToDouble(numericUpDown1.Value));
+                    beef = beef - Convert.ToInt64(Convert.ToDouble(numericUpDown1.Value) / beefprice);
                     BEEFAMMOUNT.Text = $"BEEF: {beef}";
                     BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
@@ -128,7 +131,7 @@ namespace Beef.exe
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string[] save = { $"{beef}", $"{clickpower}", $"{bdol}", $"{workers}" };
+            string[] save = { $"{beef}", $"{clickpower}", $"{bdol}", $"{slaves}", $"{slavebutton}", $"{slavepower}", $"{beefprice}" };
             System.IO.File.WriteAllLines(@"DATA\SAVE FILE (requires DETERMINATION)", save);
         }
 
@@ -138,10 +141,14 @@ namespace Beef.exe
             beef = Convert.ToInt64(load[0]);
             clickpower = Convert.ToInt64(load[1]);
             bdol = Convert.ToInt64(load[2]);
-            workers = Convert.ToInt64(load[3]);
+            slaves = Convert.ToInt64(load[3]);
+            slavebutton = Convert.ToBoolean(load[4]);
+            slavepower = Convert.ToInt64(load[5]);
+            beefprice = Convert.ToDouble(load[6]);
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
             BEEFDOLAMM.Text = $"B$: {bdol}";
-            slaveCounter.Text = $"SLAVES: {workers}";
+            slaveCounter.Text = $"SLAVES: {slaves}";
+            label5.Text = $"1 BEEF = {beefprice} B$";
             string[] FN2 = System.IO.File.ReadAllLines(@"DATA\FN");
             fn = FN2[0];
             BEEFLABEL.Text = $"{fn} FACTORY";
@@ -153,26 +160,29 @@ namespace Beef.exe
             EMAN.Show();
         }
 
-        private void KFIREXE_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (beef + workers * 10 > beef)
-                beef = beef + workers * 10;
+            if (beef + slaves * slavepower * 10 > beef)
+                beef = beef + slaves * slavepower * 10;
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            if (slavebutton == true)
+            {
+                button9.Visible = false;
+                button10.Visible = true;
+                button11.Visible = true;
+                button12.Visible = true;
+                button13.Visible = true;
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (bdol >= 2000 * numericUpDown2.Value && workers + numericUpDown2.Value > workers)
+            if (bdol >= 2000 * numericUpDown2.Value && slaves + numericUpDown2.Value > slaves)
             {
-                workers = Convert.ToInt64(workers + numericUpDown2.Value);
+                slaves = Convert.ToInt64(slaves + numericUpDown2.Value);
                 bdol = bdol - (2000 * Convert.ToInt64(numericUpDown2.Value));
                 BEEFDOLAMM.Text = $"B$: {bdol}";
-                slaveCounter.Text = $"SLAVES: {workers}";
+                slaveCounter.Text = $"SLAVES: {slaves}";
 
             }
             else
@@ -195,6 +205,74 @@ namespace Beef.exe
             else
             {
                 Music.PlayLooping();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (beef >= 100000)
+            {
+                slavebutton = true;
+                beef = beef - 100000;
+            }
+            else
+            {
+                MessageBox.Show("You need at least 100,000 beef!");
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (beef >= 10000 && slavepower + 1 > slavepower)
+            {
+                slavepower++;
+                beef = beef - 10000;
+                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            }
+            else
+            {
+                MessageBox.Show("You need at least 10,000 beef!");
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (beef >= 100000 && slavepower + 150 > slavepower)
+            {
+                slavepower = slavepower + 150;
+                beef = beef - 100000;
+                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            }
+            else
+            {
+                MessageBox.Show("You need at least 100,000 beef!");
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (beef >= 500000 && slavepower + 1000 > slavepower)
+            {
+                slavepower = slavepower + 1000;
+                beef = beef - 500000;
+                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            }
+            else
+            {
+                MessageBox.Show("You need at least 500,000 beef!");
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (beef >= 50000)
+            {
+                beefprice = beefprice + 0.2;
+                label5.Text = $"1 BEEF = {beefprice} B$";
+            }
+            else
+            {
+                MessageBox.Show("You need at least 50,000 beef!");
             }
         }
     }
