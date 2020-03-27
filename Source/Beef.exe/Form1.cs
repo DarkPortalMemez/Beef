@@ -265,14 +265,15 @@ namespace Beef.exe
 
         private void button13_Click(object sender, EventArgs e)
         {
-            if (beef >= 50000)
+            if (beef >= 500000)
             {
                 beefprice = beefprice + 0.2;
                 label5.Text = $"1 BEEF = {beefprice} B$";
+                beef = beef - 500000;
             }
             else
             {
-                MessageBox.Show("You need at least 50,000 beef!");
+                MessageBox.Show("You need at least 500,000 beef!");
             }
         }
     }
