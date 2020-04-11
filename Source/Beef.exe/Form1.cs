@@ -17,13 +17,13 @@ namespace Beef.exe
 {
     public partial class Form1 : Form
     {
-        public long beef = 0;
-        public long slaves = 0;
-        long clickpower = 1;
-        long bdol = 0;
+        public double beef = 0;
+        public double slaves = 0;
+        double clickpower = 1;
+        double bdol = 0;
         public string fn;
         bool slavebutton = false;
-        long slavepower = 1;
+        double slavepower = 1;
         double beefprice = 0.2;
 
         System.Media.SoundPlayer Music = new System.Media.SoundPlayer();
@@ -76,19 +76,19 @@ namespace Beef.exe
             {
                 if (checkBox1.Checked == true && bdol + beef > bdol)
                 {
-                    bdol = Convert.ToInt64(Convert.ToDouble(bdol) + Convert.ToDouble(beef) * beefprice);
+                    bdol = Convert.ToDouble(Convert.ToDouble(bdol) + Convert.ToDouble(beef) * beefprice);
                     beef = 0;
                     BEEFAMMOUNT.Text = $"BEEF: {beef}";
                     BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
-                else if (numericUpDown1.Value > Convert.ToInt64(Convert.ToDouble(beef) * beefprice))
+                else if (numericUpDown1.Value > Convert.ToDecimal(Convert.ToDouble(Convert.ToDouble(beef) * beefprice)))
                 {
                     MessageBox.Show("You do not have enough beef!");
                 }
-                else if (bdol + Convert.ToInt64(numericUpDown1.Value) > bdol)
+                else if (bdol + Convert.ToDouble(numericUpDown1.Value) > bdol)
                 {
-                    bdol = Convert.ToInt64(Convert.ToDouble(bdol) + Convert.ToDouble(numericUpDown1.Value));
-                    beef = beef - Convert.ToInt64(Convert.ToDouble(numericUpDown1.Value) / beefprice);
+                    bdol = Convert.ToDouble(Convert.ToDouble(bdol) + Convert.ToDouble(numericUpDown1.Value));
+                    beef = beef - Convert.ToDouble(Convert.ToDouble(numericUpDown1.Value) / beefprice);
                     BEEFAMMOUNT.Text = $"BEEF: {beef}";
                     BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
@@ -138,12 +138,12 @@ namespace Beef.exe
         private void button6_Click(object sender, EventArgs e)
         {
             string[] load = System.IO.File.ReadAllLines(@"DATA\SAVE FILE (requires DETERMINATION)");
-            beef = Convert.ToInt64(load[0]);
-            clickpower = Convert.ToInt64(load[1]);
-            bdol = Convert.ToInt64(load[2]);
-            slaves = Convert.ToInt64(load[3]);
+            beef = Convert.ToDouble(load[0]);
+            clickpower = Convert.ToDouble(load[1]);
+            bdol = Convert.ToDouble(load[2]);
+            slaves = Convert.ToDouble(load[3]);
             slavebutton = Convert.ToBoolean(load[4]);
-            slavepower = Convert.ToInt64(load[5]);
+            slavepower = Convert.ToDouble(load[5]);
             beefprice = Convert.ToDouble(load[6]);
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
             BEEFDOLAMM.Text = $"B$: {bdol}";
@@ -177,10 +177,10 @@ namespace Beef.exe
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (bdol >= 2000 * numericUpDown2.Value && slaves + numericUpDown2.Value > slaves)
+            if (Convert.ToDecimal(bdol) >= 2000 * numericUpDown2.Value && Convert.ToDecimal(slaves) + numericUpDown2.Value > Convert.ToDecimal(slaves))
             {
-                slaves = Convert.ToInt64(slaves + numericUpDown2.Value);
-                bdol = bdol - (2000 * Convert.ToInt64(numericUpDown2.Value));
+                slaves = Convert.ToDouble(Convert.ToDecimal(slaves) + numericUpDown2.Value);
+                bdol = bdol - (2000 * Convert.ToDouble(numericUpDown2.Value));
                 BEEFDOLAMM.Text = $"B$: {bdol}";
                 slaveCounter.Text = $"SLAVES: {slaves}";
 
