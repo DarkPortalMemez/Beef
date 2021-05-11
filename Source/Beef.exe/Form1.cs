@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
 
 
 // This is the code for your desktop app.
@@ -26,14 +27,15 @@ namespace Beef.exe
         bool slavebutton = false;
         double slavepower = 1;
         double beefprice = 0.2;
-
-        System.Media.SoundPlayer Music = new System.Media.SoundPlayer();
+        int timeUntilEmptyNews = -1;
+        SoundPlayer notifier = new SoundPlayer();
         public Form1() {
             InitializeComponent();
             string[] defsav = { "0", "1", "0", "0", "false", "1", "0.2" };
             string[] defsa2v = { "YOUR BEEF" };
-            Music.SoundLocation = "Main.wav";
-            Music.PlayLooping();
+            notifier.SoundLocation = @"sounds\notif.wav";
+            musicPlayer.settings.setMode("loop", true);
+            startMusic();
             System.IO.Directory.CreateDirectory(@"DATA");
             FileInfo FI = new FileInfo(@"DATA\SAVE FILE (requires DETERMINATION)");
             FileInfo FI2 = new FileInfo(@"DATA\FN");
@@ -46,17 +48,39 @@ namespace Beef.exe
                     System.IO.File.WriteAllLines(@"DATA\FN", defsa2v);
 
             }
-
         }
+        void startMusic()
+        {
+            if (slavebutton)
+            {
+                musicPlayer.URL = @"sounds\Secondary.wav";
+            }
+            else
+            {
+                musicPlayer.URL = @"sounds\Main.wav";
+            }
+        }
+        /*void PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (e.newState == 8)
+            {
+                //music ended
+                startMusic();
+            }
+        }*/
         public void UpdateCounters()
         {
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
             label5.Text = $"1 BEEF = {beefprice} B$";
+            slaveCounter.Text = $"SLAVES: {slaves}";
         }
         public void UpdateNews(string news, Color color)
         {
-            label3.Text = news;
+            label3.Text = "News Feed: " + news;
             label3.ForeColor = color;
+            if (notifCheckBox.Checked && news != "Empty.")
+                notifier.Play();
+            timeUntilEmptyNews = 20;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -156,10 +180,7 @@ namespace Beef.exe
             slavebutton = Convert.ToBoolean(load[4]);
             slavepower = Convert.ToDouble(load[5]);
             beefprice = Convert.ToDouble(load[6]);
-            if (slavebutton == true)
-            {
-
-            }
+            slaveCheck();
             UpdateCounters();
             BEEFDOLAMM.Text = $"B$: {bdol}";
             slaveCounter.Text = $"SLAVES: {slaves}";
@@ -179,15 +200,24 @@ namespace Beef.exe
         {
             if (slaves > 10)
             {
-                if (generalRandom.Next(0, 1) == 0)
+                if (generalRandom.Next(0, 800) == 0)
                 {
                     double percentLost = ((double)generalRandom.Next(20, 70)) / 100;
                     slaves -= Math.Ceiling(slaves * percentLost);
+                    UpdateCounters();
                     UpdateNews($"{percentLost * 100}% of your slaves have escaped!\nThat's {Math.Ceiling(slaves * percentLost)} slaves!", Color.DarkRed);
                 }
             }
             if (beef + slaves * slavepower * 10 > beef)
                 beef = beef + slaves * slavepower * 10;
+            if (timeUntilEmptyNews > 0)
+            {
+                timeUntilEmptyNews--;
+                if (timeUntilEmptyNews == 0)
+                {
+                    UpdateNews("Empty.", Color.Black);
+                }
+            }
             UpdateCounters();
         }
 
@@ -198,7 +228,7 @@ namespace Beef.exe
                 slaves = Convert.ToDouble(Convert.ToDecimal(slaves) + numericUpDown2.Value);
                 bdol = bdol - (2000 * Convert.ToDouble(numericUpDown2.Value));
                 BEEFDOLAMM.Text = $"B$: {bdol}";
-                slaveCounter.Text = $"SLAVES: {slaves}";
+                UpdateCounters();
 
             }
             else
@@ -216,26 +246,38 @@ namespace Beef.exe
         {
             if (checkBox2.Checked == false)
             {
-                Music.Stop();
+                musicPlayer.URL = null;
             }
             else
             {
-                Music.PlayLooping();
+                startMusic();
             }
         }
-
-        private void button9_Click(object sender, EventArgs e)
+        void slaveCheck()
         {
-            if (beef >= 100000)
+            if (slavebutton == true)
             {
-                slavebutton = true;
+                double position = musicPlayer.Ctlcontrols.currentPosition;
+                musicPlayer.URL = @"sounds\Secondary.wav";
+                musicPlayer.Ctlcontrols.currentPosition = position;
                 button9.Visible = false;
                 button10.Visible = true;
                 button11.Visible = true;
                 button12.Visible = true;
                 button13.Visible = true;
-                timer2.Enabled = true;
-                timer2.Start();
+                if (timer2.Enabled == false)
+                {
+                    timer2.Enabled = true;
+                    timer2.Start();
+                }
+            }
+        }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (beef >= 100000)
+            {
+                slavebutton = true;
+                slaveCheck();
                 beef -= 100000;
             }
             else
@@ -305,7 +347,7 @@ namespace Beef.exe
             if (beefprice > 0.5)
             {
                 beefprice -= 0.1;
-                UpdateNews("The value of beef has diminished by 0.1 B$", Color.DarkOrange);
+                UpdateNews("The value of beef has diminished \nby 0.1 B$.", Color.DarkOrange);
                 UpdateCounters();
             }
         }
