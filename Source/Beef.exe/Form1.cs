@@ -17,6 +17,7 @@ namespace Beef.exe
 {
     public partial class Form1 : Form
     {
+        Random generalRandom = new Random();
         public double beef = 0;
         public double slaves = 0;
         double clickpower = 1;
@@ -47,12 +48,22 @@ namespace Beef.exe
             }
 
         }
+        public void UpdateCounters()
+        {
+            BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            label5.Text = $"1 BEEF = {beefprice} B$";
+        }
+        public void UpdateNews(string news, Color color)
+        {
+            label3.Text = news;
+            label3.ForeColor = color;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (beef + clickpower > beef)
                 beef = beef + clickpower;
-            BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            UpdateCounters();
         }
 
 
@@ -62,7 +73,7 @@ namespace Beef.exe
             {
                 clickpower++;
                 beef = beef - 100;
-                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                UpdateCounters();
             }
             else
             {
@@ -78,7 +89,7 @@ namespace Beef.exe
                 {
                     bdol = Convert.ToDouble(Convert.ToDouble(bdol) + Convert.ToDouble(beef) * beefprice);
                     beef = 0;
-                    BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                    UpdateCounters();
                     BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
                 else if (numericUpDown1.Value > Convert.ToDecimal(Convert.ToDouble(Convert.ToDouble(beef) * beefprice)))
@@ -89,7 +100,7 @@ namespace Beef.exe
                 {
                     bdol = Convert.ToDouble(Convert.ToDouble(bdol) + Convert.ToDouble(numericUpDown1.Value));
                     beef = beef - Convert.ToDouble(Convert.ToDouble(numericUpDown1.Value) / beefprice);
-                    BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                    UpdateCounters();
                     BEEFDOLAMM.Text = $"B$: {bdol}";
                 }
             }
@@ -105,7 +116,7 @@ namespace Beef.exe
             {
                 clickpower = clickpower + 150;
                 beef = beef - 5000;
-                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                UpdateCounters();
 
             }
             else
@@ -120,7 +131,7 @@ namespace Beef.exe
             {
                 clickpower = clickpower + 15;
                 beef = beef - 1000;
-                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                UpdateCounters();
             }
             else
             {
@@ -145,7 +156,11 @@ namespace Beef.exe
             slavebutton = Convert.ToBoolean(load[4]);
             slavepower = Convert.ToDouble(load[5]);
             beefprice = Convert.ToDouble(load[6]);
-            BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            if (slavebutton == true)
+            {
+
+            }
+            UpdateCounters();
             BEEFDOLAMM.Text = $"B$: {bdol}";
             slaveCounter.Text = $"SLAVES: {slaves}";
             label5.Text = $"1 BEEF = {beefprice} B$";
@@ -162,17 +177,18 @@ namespace Beef.exe
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (slaves > 10)
+            {
+                if (generalRandom.Next(0, 1) == 0)
+                {
+                    double percentLost = ((double)generalRandom.Next(20, 70)) / 100;
+                    slaves -= Math.Ceiling(slaves * percentLost);
+                    UpdateNews($"{percentLost * 100}% of your slaves have escaped!\nThat's {Math.Ceiling(slaves * percentLost)} slaves!", Color.DarkRed);
+                }
+            }
             if (beef + slaves * slavepower * 10 > beef)
                 beef = beef + slaves * slavepower * 10;
-            BEEFAMMOUNT.Text = $"BEEF: {beef}";
-            if (slavebutton == true)
-            {
-                button9.Visible = false;
-                button10.Visible = true;
-                button11.Visible = true;
-                button12.Visible = true;
-                button13.Visible = true;
-            }
+            UpdateCounters();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -213,7 +229,14 @@ namespace Beef.exe
             if (beef >= 100000)
             {
                 slavebutton = true;
-                beef = beef - 100000;
+                button9.Visible = false;
+                button10.Visible = true;
+                button11.Visible = true;
+                button12.Visible = true;
+                button13.Visible = true;
+                timer2.Enabled = true;
+                timer2.Start();
+                beef -= 100000;
             }
             else
             {
@@ -227,7 +250,7 @@ namespace Beef.exe
             {
                 slavepower++;
                 beef = beef - 10000;
-                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                UpdateCounters();
             }
             else
             {
@@ -241,7 +264,7 @@ namespace Beef.exe
             {
                 slavepower = slavepower + 150;
                 beef = beef - 100000;
-                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                UpdateCounters();
             }
             else
             {
@@ -255,7 +278,7 @@ namespace Beef.exe
             {
                 slavepower = slavepower + 1000;
                 beef = beef - 500000;
-                BEEFAMMOUNT.Text = $"BEEF: {beef}";
+                UpdateCounters();
             }
             else
             {
@@ -268,12 +291,22 @@ namespace Beef.exe
             if (beef >= 500000)
             {
                 beefprice = beefprice + 0.2;
-                label5.Text = $"1 BEEF = {beefprice} B$";
                 beef = beef - 500000;
+                UpdateCounters();
             }
             else
             {
                 MessageBox.Show("You need at least 500,000 beef!");
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (beefprice > 0.5)
+            {
+                beefprice -= 0.1;
+                UpdateNews("The value of beef has diminished by 0.1 B$", Color.DarkOrange);
+                UpdateCounters();
             }
         }
     }

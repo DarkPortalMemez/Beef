@@ -58,6 +58,8 @@ namespace Beef.exe
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -65,18 +67,20 @@ namespace Beef.exe
             // BEEFAMMOUNT
             // 
             this.BEEFAMMOUNT.AutoSize = true;
-            this.BEEFAMMOUNT.Location = new System.Drawing.Point(362, 385);
+            this.BEEFAMMOUNT.Location = new System.Drawing.Point(241, 250);
+            this.BEEFAMMOUNT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BEEFAMMOUNT.Name = "BEEFAMMOUNT";
-            this.BEEFAMMOUNT.Size = new System.Drawing.Size(69, 20);
+            this.BEEFAMMOUNT.Size = new System.Drawing.Size(46, 13);
             this.BEEFAMMOUNT.TabIndex = 1;
             this.BEEFAMMOUNT.Text = "BEEF: 0";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(322, 169);
+            this.button1.Location = new System.Drawing.Point(215, 110);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 98);
+            this.button1.Size = new System.Drawing.Size(97, 64);
             this.button1.TabIndex = 2;
             this.button1.Text = "MAKE BEEF";
             this.button1.UseVisualStyleBackColor = true;
@@ -87,9 +91,10 @@ namespace Beef.exe
             this.BEEFLABEL.AutoEllipsis = true;
             this.BEEFLABEL.AutoSize = true;
             this.BEEFLABEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BEEFLABEL.Location = new System.Drawing.Point(231, 55);
+            this.BEEFLABEL.Location = new System.Drawing.Point(154, 36);
+            this.BEEFLABEL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BEEFLABEL.Name = "BEEFLABEL";
-            this.BEEFLABEL.Size = new System.Drawing.Size(364, 37);
+            this.BEEFLABEL.Size = new System.Drawing.Size(252, 26);
             this.BEEFLABEL.TabIndex = 3;
             this.BEEFLABEL.Text = "YOUR BEEF FACTORY";
             this.BEEFLABEL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -97,9 +102,10 @@ namespace Beef.exe
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(663, 123);
+            this.button2.Location = new System.Drawing.Point(442, 80);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 60);
+            this.button2.Size = new System.Drawing.Size(89, 39);
             this.button2.TabIndex = 4;
             this.button2.Text = "UPGRADE CLICK";
             this.button2.UseVisualStyleBackColor = true;
@@ -108,9 +114,10 @@ namespace Beef.exe
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(12, 208);
+            this.button3.Location = new System.Drawing.Point(8, 135);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(134, 60);
+            this.button3.Size = new System.Drawing.Size(89, 39);
             this.button3.TabIndex = 5;
             this.button3.Text = "SELL BEEF";
             this.button3.UseVisualStyleBackColor = true;
@@ -119,57 +126,63 @@ namespace Beef.exe
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(20, 348);
+            this.checkBox1.Location = new System.Drawing.Point(13, 226);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(22, 21);
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 325);
+            this.label1.Location = new System.Drawing.Point(11, 211);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Sell all";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 269);
+            this.label2.Location = new System.Drawing.Point(11, 175);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 20);
+            this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Amount of B$";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 292);
+            this.numericUpDown1.Location = new System.Drawing.Point(8, 190);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             276447231,
             23283,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 26);
+            this.numericUpDown1.Size = new System.Drawing.Size(80, 20);
             this.numericUpDown1.TabIndex = 9;
             // 
             // BEEFDOLAMM
             // 
             this.BEEFDOLAMM.AutoSize = true;
-            this.BEEFDOLAMM.Location = new System.Drawing.Point(370, 422);
+            this.BEEFDOLAMM.Location = new System.Drawing.Point(247, 274);
+            this.BEEFDOLAMM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BEEFDOLAMM.Name = "BEEFDOLAMM";
-            this.BEEFDOLAMM.Size = new System.Drawing.Size(46, 20);
+            this.BEEFDOLAMM.Size = new System.Drawing.Size(32, 13);
             this.BEEFDOLAMM.TabIndex = 10;
             this.BEEFDOLAMM.Text = "B$: 0";
             // 
             // DC
             // 
             this.DC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DC.Location = new System.Drawing.Point(663, 192);
+            this.DC.Location = new System.Drawing.Point(442, 125);
+            this.DC.Margin = new System.Windows.Forms.Padding(2);
             this.DC.Name = "DC";
-            this.DC.Size = new System.Drawing.Size(134, 60);
+            this.DC.Size = new System.Drawing.Size(89, 39);
             this.DC.TabIndex = 13;
             this.DC.Text = "SUPGRADE CLICK";
             this.DC.UseVisualStyleBackColor = true;
@@ -178,9 +191,10 @@ namespace Beef.exe
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(663, 258);
+            this.button4.Location = new System.Drawing.Point(442, 168);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(134, 60);
+            this.button4.Size = new System.Drawing.Size(89, 39);
             this.button4.TabIndex = 14;
             this.button4.Text = "OPGRADE CLICK";
             this.button4.UseVisualStyleBackColor = true;
@@ -188,9 +202,10 @@ namespace Beef.exe
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(584, 394);
+            this.button5.Location = new System.Drawing.Point(389, 256);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 45);
+            this.button5.Size = new System.Drawing.Size(67, 29);
             this.button5.TabIndex = 15;
             this.button5.Text = "SAVE";
             this.button5.UseVisualStyleBackColor = true;
@@ -199,17 +214,19 @@ namespace Beef.exe
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(638, 349);
+            this.label4.Location = new System.Drawing.Point(425, 227);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 20);
+            this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 16;
             this.label4.Text = "FILE AREA";
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(696, 394);
+            this.button6.Location = new System.Drawing.Point(464, 256);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 45);
+            this.button6.Size = new System.Drawing.Size(67, 29);
             this.button6.TabIndex = 17;
             this.button6.Text = "LOAD";
             this.button6.UseVisualStyleBackColor = true;
@@ -218,9 +235,10 @@ namespace Beef.exe
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(280, 95);
+            this.button7.Location = new System.Drawing.Point(187, 62);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(225, 37);
+            this.button7.Size = new System.Drawing.Size(150, 24);
             this.button7.TabIndex = 18;
             this.button7.Text = "Change factory name";
             this.button7.UseVisualStyleBackColor = true;
@@ -235,10 +253,9 @@ namespace Beef.exe
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(663, 8);
-            this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button8.Location = new System.Drawing.Point(442, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(134, 35);
+            this.button8.Size = new System.Drawing.Size(89, 23);
             this.button8.TabIndex = 19;
             this.button8.Text = "Buy slaves";
             this.button8.UseVisualStyleBackColor = true;
@@ -246,31 +263,34 @@ namespace Beef.exe
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(676, 86);
+            this.numericUpDown2.Location = new System.Drawing.Point(451, 56);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1316134911,
             2328,
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 26);
+            this.numericUpDown2.Size = new System.Drawing.Size(80, 20);
             this.numericUpDown2.TabIndex = 20;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(692, 63);
+            this.label6.Location = new System.Drawing.Point(461, 41);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 20);
+            this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 22;
             this.label6.Text = "Amount";
             // 
             // slaveCounter
             // 
             this.slaveCounter.AutoSize = true;
-            this.slaveCounter.Location = new System.Drawing.Point(672, 43);
+            this.slaveCounter.Location = new System.Drawing.Point(448, 28);
+            this.slaveCounter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.slaveCounter.Name = "slaveCounter";
-            this.slaveCounter.Size = new System.Drawing.Size(90, 20);
+            this.slaveCounter.Size = new System.Drawing.Size(60, 13);
             this.slaveCounter.TabIndex = 23;
             this.slaveCounter.Text = "SLAVES: 0";
             this.slaveCounter.Click += new System.EventHandler(this.label5_Click);
@@ -278,9 +298,10 @@ namespace Beef.exe
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 185);
+            this.label5.Location = new System.Drawing.Point(11, 120);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 20);
+            this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 24;
             this.label5.Text = "1 BEEF = 0.2 B$";
             // 
@@ -289,9 +310,10 @@ namespace Beef.exe
             this.checkBox2.AutoSize = true;
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(12, 8);
+            this.checkBox2.Location = new System.Drawing.Point(8, 5);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(76, 24);
+            this.checkBox2.Size = new System.Drawing.Size(54, 17);
             this.checkBox2.TabIndex = 25;
             this.checkBox2.Text = "Music";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -299,9 +321,10 @@ namespace Beef.exe
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(819, 5);
+            this.button9.Location = new System.Drawing.Point(546, 3);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(120, 58);
+            this.button9.Size = new System.Drawing.Size(80, 38);
             this.button9.TabIndex = 26;
             this.button9.Text = "Buy buttons";
             this.button9.UseVisualStyleBackColor = true;
@@ -310,9 +333,10 @@ namespace Beef.exe
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(511, 123);
+            this.button10.Location = new System.Drawing.Point(341, 80);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(134, 60);
+            this.button10.Size = new System.Drawing.Size(89, 39);
             this.button10.TabIndex = 27;
             this.button10.Text = "UPGRADE SLAVES";
             this.button10.UseVisualStyleBackColor = true;
@@ -322,9 +346,10 @@ namespace Beef.exe
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(511, 193);
+            this.button11.Location = new System.Drawing.Point(341, 125);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(134, 60);
+            this.button11.Size = new System.Drawing.Size(89, 39);
             this.button11.TabIndex = 28;
             this.button11.Text = "SUPGRADE SLAVES";
             this.button11.UseVisualStyleBackColor = true;
@@ -334,9 +359,10 @@ namespace Beef.exe
             // button12
             // 
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(511, 259);
+            this.button12.Location = new System.Drawing.Point(341, 168);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(134, 60);
+            this.button12.Size = new System.Drawing.Size(89, 39);
             this.button12.TabIndex = 29;
             this.button12.Text = "OPGRADE SLAVES";
             this.button12.UseVisualStyleBackColor = true;
@@ -346,21 +372,35 @@ namespace Beef.exe
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(12, 145);
-            this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button13.Location = new System.Drawing.Point(8, 94);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(134, 35);
+            this.button13.Size = new System.Drawing.Size(89, 23);
             this.button13.TabIndex = 30;
             this.button13.Text = "Market BEEF";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Visible = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 5000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 264);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "News Feed: Empty.";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 449);
+            this.ClientSize = new System.Drawing.Size(537, 292);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
@@ -389,6 +429,7 @@ namespace Beef.exe
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BEEFAMMOUNT);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Beef";
@@ -428,6 +469,8 @@ namespace Beef.exe
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
