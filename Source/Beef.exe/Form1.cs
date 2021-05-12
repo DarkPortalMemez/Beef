@@ -24,24 +24,27 @@ namespace Beef.exe
         double clickpower = 1;
         double bdol = 0;
         public string fn;
-        bool slavebutton = false;
+        bool upgradeButtonsI = false;
+        bool upgradeButtonsII = false;
         double slavepower = 1;
         double beefprice = 0.2;
         int timeUntilEmptyNews = -1;
+        double marketingTeamSize = 0;
+        double marketingTeamRates = 1000;
         SoundPlayer notifier = new SoundPlayer();
         public Form1() {
             InitializeComponent();
-            string[] defsav = { "0", "1", "0", "0", "false", "1", "0.2" };
+            string[] defsav = { "0", "1", "0", "0", "false", "1", "0.2", "false" };
             string[] defsa2v = { "YOUR BEEF" };
             notifier.SoundLocation = @"sounds\notif.wav";
             musicPlayer.settings.setMode("loop", true);
             startMusic();
             System.IO.Directory.CreateDirectory(@"DATA");
-            FileInfo FI = new FileInfo(@"DATA\SAVE FILE (requires DETERMINATION)");
+            FileInfo FI = new FileInfo(@"DATA\SAVE FILE");
             FileInfo FI2 = new FileInfo(@"DATA\FN");
             if (FI.Exists == false)
             {
-                    System.IO.File.WriteAllLines(@"DATA\SAVE FILE (requires DETERMINATION)", defsav);
+                    System.IO.File.WriteAllLines(@"DATA\SAVE FILE", defsav);
             }
             if (FI2.Exists == false)
             {
@@ -51,7 +54,7 @@ namespace Beef.exe
         }
         void startMusic()
         {
-            if (slavebutton)
+            if (upgradeButtonsI)
             {
                 musicPlayer.URL = @"sounds\Secondary.wav";
             }
@@ -71,8 +74,11 @@ namespace Beef.exe
         public void UpdateCounters()
         {
             BEEFAMMOUNT.Text = $"BEEF: {beef}";
+            BEEFDOLAMM.Text = $"B$: {bdol}";
             label5.Text = $"1 BEEF = {beefprice} B$";
             slaveCounter.Text = $"SLAVES: {slaves}";
+            marketingTeamRatesLabel.Text = $"Employee rates:\n {marketingTeamRates}$/s";
+            marketingTeamSizeLabel.Text = $"Employees: {marketingTeamSize}";
         }
         public void UpdateNews(string news, Color color)
         {
@@ -114,7 +120,7 @@ namespace Beef.exe
                     bdol = Convert.ToDouble(Convert.ToDouble(bdol) + Convert.ToDouble(beef) * beefprice);
                     beef = 0;
                     UpdateCounters();
-                    BEEFDOLAMM.Text = $"B$: {bdol}";
+
                 }
                 else if (numericUpDown1.Value > Convert.ToDecimal(Convert.ToDouble(Convert.ToDouble(beef) * beefprice)))
                 {
@@ -125,7 +131,7 @@ namespace Beef.exe
                     bdol = Convert.ToDouble(Convert.ToDouble(bdol) + Convert.ToDouble(numericUpDown1.Value));
                     beef = beef - Convert.ToDouble(Convert.ToDouble(numericUpDown1.Value) / beefprice);
                     UpdateCounters();
-                    BEEFDOLAMM.Text = $"B$: {bdol}";
+
                 }
             }
             else
@@ -166,21 +172,23 @@ namespace Beef.exe
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string[] save = { $"{beef}", $"{clickpower}", $"{bdol}", $"{slaves}", $"{slavebutton}", $"{slavepower}", $"{beefprice}" };
-            System.IO.File.WriteAllLines(@"DATA\SAVE FILE (requires DETERMINATION)", save);
+            string[] save = { beef.ToString(), clickpower.ToString(), bdol.ToString(), slaves.ToString(), upgradeButtonsI.ToString(), slavepower.ToString(), beefprice.ToString(), upgradeButtonsII.ToString(), marketingTeamSize.ToString() };
+            System.IO.File.WriteAllLines(@"DATA\SAVE FILE", save);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string[] load = System.IO.File.ReadAllLines(@"DATA\SAVE FILE (requires DETERMINATION)");
+            string[] load = System.IO.File.ReadAllLines(@"DATA\SAVE FILE");
             beef = Convert.ToDouble(load[0]);
             clickpower = Convert.ToDouble(load[1]);
             bdol = Convert.ToDouble(load[2]);
             slaves = Convert.ToDouble(load[3]);
-            slavebutton = Convert.ToBoolean(load[4]);
+            upgradeButtonsI = Convert.ToBoolean(load[4]);
             slavepower = Convert.ToDouble(load[5]);
             beefprice = Convert.ToDouble(load[6]);
-            slaveCheck();
+            upgradeButtonsII = Convert.ToBoolean(load[7]);
+            marketingTeamSize = Convert.ToDouble(load[8]);
+            marketingTeamRates = 1000 + 500 * marketingTeamSize;
             UpdateCounters();
             BEEFDOLAMM.Text = $"B$: {bdol}";
             slaveCounter.Text = $"SLAVES: {slaves}";
@@ -209,7 +217,25 @@ namespace Beef.exe
                 }
             }
             if (beef + slaves * slavepower * 10 > beef)
+            {
                 beef = beef + slaves * slavepower * 10;
+                UpdateCounters();
+            }
+            if (marketingTeamSize > 0)
+            {
+                if (bdol > marketingTeamRates * marketingTeamSize - 1)
+                {
+                    bdol -= marketingTeamRates * marketingTeamSize;
+                    beefprice += marketingTeamSize / 100;
+                    UpdateCounters();
+                }
+                else
+                {
+                    bdol = 0;
+                    marketingTeamSize = 0;
+                    UpdateNews("You've ran out of money!\n Your marketing team has quit!", Color.BlueViolet);
+                }
+            }
             if (timeUntilEmptyNews > 0)
             {
                 timeUntilEmptyNews--;
@@ -218,7 +244,6 @@ namespace Beef.exe
                     UpdateNews("Empty.", Color.Black);
                 }
             }
-            UpdateCounters();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -237,11 +262,6 @@ namespace Beef.exe
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked == false)
@@ -253,32 +273,41 @@ namespace Beef.exe
                 startMusic();
             }
         }
-        void slaveCheck()
+        void buttonBuyChecks()
         {
-            if (slavebutton == true)
+            if (upgradeButtonsI == true)
             {
                 double position = musicPlayer.Ctlcontrols.currentPosition;
                 musicPlayer.URL = @"sounds\Secondary.wav";
                 musicPlayer.Ctlcontrols.currentPosition = position;
-                button9.Visible = false;
-                button10.Visible = true;
-                button11.Visible = true;
-                button12.Visible = true;
-                button13.Visible = true;
+                superButton1.Visible = false;
+                upgSlaveIButton.Visible = true;
+                upgSlaveIIButton.Visible = true;
+                upgSlaveIIIButton.Visible = true;
+                marketingButton.Visible = true;
+                superButton2.Visible = true;
                 if (timer2.Enabled == false)
                 {
                     timer2.Enabled = true;
                     timer2.Start();
                 }
             }
+            if (upgradeButtonsII)
+            {
+                superButton2.Visible = false;
+                marketingTeamButton.Visible = true;
+                marketingTeamSizeLabel.Visible = true;
+                marketingTeamRatesLabel.Visible = true;
+            }
+            UpdateCounters();
         }
-        private void button9_Click(object sender, EventArgs e)
+        private void superButton1_Click(object sender, EventArgs e)
         {
             if (beef >= 100000)
             {
-                slavebutton = true;
-                slaveCheck();
+                upgradeButtonsI = true;
                 beef -= 100000;
+                buttonBuyChecks();
             }
             else
             {
@@ -346,9 +375,39 @@ namespace Beef.exe
         {
             if (beefprice > 0.5)
             {
-                beefprice -= 0.1;
-                UpdateNews("The value of beef has diminished \nby 0.1 B$.", Color.DarkOrange);
+                double reduction = Math.Max(beefprice / 5, 0.1);
+                beefprice -= reduction;
+                UpdateNews($"The value of beef has diminished \nby {reduction} B$.", Color.DarkOrange);
                 UpdateCounters();
+            }
+        }
+
+        private void superButton2_Click(object sender, EventArgs e)
+        {
+            if (bdol >= 1000000)
+            {
+                upgradeButtonsII = true;
+                bdol -= 1000000;
+                buttonBuyChecks();
+                UpdateCounters();
+            }
+            else
+            {
+                MessageBox.Show("You need at least 1,000,000 B$!");
+            }
+        }
+
+        private void marketingTeamButton_Click(object sender, EventArgs e)
+        {
+            if (bdol >= marketingTeamRates && marketingTeamSize + 1 > marketingTeamSize)
+            {
+                marketingTeamSize++;
+                marketingTeamRates = 1000 + 500 * marketingTeamSize;
+                UpdateCounters();
+            }
+            else
+            {
+                MessageBox.Show($"You need at least {marketingTeamRates} B$!");
             }
         }
     }

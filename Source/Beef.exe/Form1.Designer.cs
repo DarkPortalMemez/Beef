@@ -53,15 +53,19 @@ namespace Beef.exe
             this.slaveCounter = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.superButton1 = new System.Windows.Forms.Button();
+            this.upgSlaveIButton = new System.Windows.Forms.Button();
+            this.upgSlaveIIButton = new System.Windows.Forms.Button();
+            this.upgSlaveIIIButton = new System.Windows.Forms.Button();
+            this.marketingButton = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.notifCheckBox = new System.Windows.Forms.CheckBox();
+            this.superButton2 = new System.Windows.Forms.Button();
+            this.marketingTeamButton = new System.Windows.Forms.Button();
+            this.marketingTeamRatesLabel = new System.Windows.Forms.Label();
+            this.marketingTeamSizeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
@@ -278,7 +282,6 @@ namespace Beef.exe
             this.slaveCounter.Size = new System.Drawing.Size(90, 20);
             this.slaveCounter.TabIndex = 23;
             this.slaveCounter.Text = "SLAVES: 0";
-            this.slaveCounter.Click += new System.EventHandler(this.label5_Click);
             // 
             // label5
             // 
@@ -302,64 +305,64 @@ namespace Beef.exe
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // button9
+            // superButton1
             // 
-            this.button9.Location = new System.Drawing.Point(819, 5);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(120, 58);
-            this.button9.TabIndex = 26;
-            this.button9.Text = "Buy buttons";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.superButton1.Location = new System.Drawing.Point(819, 5);
+            this.superButton1.Name = "superButton1";
+            this.superButton1.Size = new System.Drawing.Size(120, 58);
+            this.superButton1.TabIndex = 26;
+            this.superButton1.Text = "Buy buttons";
+            this.superButton1.UseVisualStyleBackColor = true;
+            this.superButton1.Click += new System.EventHandler(this.superButton1_Click);
             // 
-            // button10
+            // upgSlaveIButton
             // 
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(512, 123);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(134, 60);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "UPGRADE SLAVES";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.upgSlaveIButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upgSlaveIButton.Location = new System.Drawing.Point(512, 123);
+            this.upgSlaveIButton.Name = "upgSlaveIButton";
+            this.upgSlaveIButton.Size = new System.Drawing.Size(134, 60);
+            this.upgSlaveIButton.TabIndex = 27;
+            this.upgSlaveIButton.Text = "UPGRADE SLAVES";
+            this.upgSlaveIButton.UseVisualStyleBackColor = true;
+            this.upgSlaveIButton.Visible = false;
+            this.upgSlaveIButton.Click += new System.EventHandler(this.button10_Click);
             // 
-            // button11
+            // upgSlaveIIButton
             // 
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(512, 192);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(134, 60);
-            this.button11.TabIndex = 28;
-            this.button11.Text = "SUPGRADE SLAVES";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Visible = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.upgSlaveIIButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upgSlaveIIButton.Location = new System.Drawing.Point(512, 192);
+            this.upgSlaveIIButton.Name = "upgSlaveIIButton";
+            this.upgSlaveIIButton.Size = new System.Drawing.Size(134, 60);
+            this.upgSlaveIIButton.TabIndex = 28;
+            this.upgSlaveIIButton.Text = "SUPGRADE SLAVES";
+            this.upgSlaveIIButton.UseVisualStyleBackColor = true;
+            this.upgSlaveIIButton.Visible = false;
+            this.upgSlaveIIButton.Click += new System.EventHandler(this.button11_Click);
             // 
-            // button12
+            // upgSlaveIIIButton
             // 
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(512, 258);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(134, 60);
-            this.button12.TabIndex = 29;
-            this.button12.Text = "OPGRADE SLAVES";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Visible = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.upgSlaveIIIButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upgSlaveIIIButton.Location = new System.Drawing.Point(512, 258);
+            this.upgSlaveIIIButton.Name = "upgSlaveIIIButton";
+            this.upgSlaveIIIButton.Size = new System.Drawing.Size(134, 60);
+            this.upgSlaveIIIButton.TabIndex = 29;
+            this.upgSlaveIIIButton.Text = "OPGRADE SLAVES";
+            this.upgSlaveIIIButton.UseVisualStyleBackColor = true;
+            this.upgSlaveIIIButton.Visible = false;
+            this.upgSlaveIIIButton.Click += new System.EventHandler(this.button12_Click);
             // 
-            // button13
+            // marketingButton
             // 
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(12, 145);
-            this.button13.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(134, 35);
-            this.button13.TabIndex = 30;
-            this.button13.Text = "Market BEEF";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Visible = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.marketingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.marketingButton.Location = new System.Drawing.Point(12, 145);
+            this.marketingButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.marketingButton.Name = "marketingButton";
+            this.marketingButton.Size = new System.Drawing.Size(134, 35);
+            this.marketingButton.TabIndex = 30;
+            this.marketingButton.Text = "Market BEEF";
+            this.marketingButton.UseVisualStyleBackColor = true;
+            this.marketingButton.Visible = false;
+            this.marketingButton.Click += new System.EventHandler(this.button13_Click);
             // 
             // timer2
             // 
@@ -397,19 +400,65 @@ namespace Beef.exe
             this.notifCheckBox.Text = "Notifications";
             this.notifCheckBox.UseVisualStyleBackColor = true;
             // 
+            // superButton2
+            // 
+            this.superButton2.Location = new System.Drawing.Point(819, 69);
+            this.superButton2.Name = "superButton2";
+            this.superButton2.Size = new System.Drawing.Size(120, 55);
+            this.superButton2.TabIndex = 34;
+            this.superButton2.Text = "Buy computers";
+            this.superButton2.UseVisualStyleBackColor = true;
+            this.superButton2.Visible = false;
+            this.superButton2.Click += new System.EventHandler(this.superButton2_Click);
+            // 
+            // marketingTeamButton
+            // 
+            this.marketingTeamButton.Location = new System.Drawing.Point(584, 485);
+            this.marketingTeamButton.Name = "marketingTeamButton";
+            this.marketingTeamButton.Size = new System.Drawing.Size(100, 80);
+            this.marketingTeamButton.TabIndex = 35;
+            this.marketingTeamButton.Text = "Hire Marketing Employee";
+            this.marketingTeamButton.UseVisualStyleBackColor = true;
+            this.marketingTeamButton.Visible = false;
+            this.marketingTeamButton.Click += new System.EventHandler(this.marketingTeamButton_Click);
+            // 
+            // marketingTeamRatesLabel
+            // 
+            this.marketingTeamRatesLabel.AutoSize = true;
+            this.marketingTeamRatesLabel.Location = new System.Drawing.Point(580, 442);
+            this.marketingTeamRatesLabel.Name = "marketingTeamRatesLabel";
+            this.marketingTeamRatesLabel.Size = new System.Drawing.Size(123, 40);
+            this.marketingTeamRatesLabel.TabIndex = 36;
+            this.marketingTeamRatesLabel.Text = "Employee rates:\r\n1000B$/s\r\n";
+            this.marketingTeamRatesLabel.Visible = false;
+            // 
+            // marketingTeamSizeLabel
+            // 
+            this.marketingTeamSizeLabel.AutoSize = true;
+            this.marketingTeamSizeLabel.Location = new System.Drawing.Point(704, 485);
+            this.marketingTeamSizeLabel.Name = "marketingTeamSizeLabel";
+            this.marketingTeamSizeLabel.Size = new System.Drawing.Size(104, 20);
+            this.marketingTeamSizeLabel.TabIndex = 37;
+            this.marketingTeamSizeLabel.Text = "Employees: 0";
+            this.marketingTeamSizeLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 449);
+            this.Controls.Add(this.marketingTeamSizeLabel);
+            this.Controls.Add(this.marketingTeamRatesLabel);
+            this.Controls.Add(this.marketingTeamButton);
+            this.Controls.Add(this.superButton2);
             this.Controls.Add(this.notifCheckBox);
             this.Controls.Add(this.musicPlayer);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.marketingButton);
+            this.Controls.Add(this.upgSlaveIIIButton);
+            this.Controls.Add(this.upgSlaveIIButton);
+            this.Controls.Add(this.upgSlaveIButton);
+            this.Controls.Add(this.superButton1);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.slaveCounter);
@@ -468,15 +517,19 @@ namespace Beef.exe
         private System.Windows.Forms.Label slaveCounter;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button superButton1;
+        private System.Windows.Forms.Button upgSlaveIButton;
+        private System.Windows.Forms.Button upgSlaveIIButton;
+        private System.Windows.Forms.Button upgSlaveIIIButton;
+        private System.Windows.Forms.Button marketingButton;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label label3;
         private AxWMPLib.AxWindowsMediaPlayer musicPlayer;
         private System.Windows.Forms.CheckBox notifCheckBox;
+        private System.Windows.Forms.Button superButton2;
+        private System.Windows.Forms.Button marketingTeamButton;
+        private System.Windows.Forms.Label marketingTeamRatesLabel;
+        private System.Windows.Forms.Label marketingTeamSizeLabel;
     }
 }
 
